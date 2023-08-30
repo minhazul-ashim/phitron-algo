@@ -4,7 +4,7 @@ using namespace std;
 const int N = 1e5 + 5;
 vector<int> adj[N];
 bool visited[N];
-int level[N];
+int parentLevel[N];
 int sum = 0;
 
 void init_code() {

@@ -11,13 +11,13 @@ void init_code() {
 const int N = 1e5 + 5;
 vector<int> adj[N];
 int visited[N];
-int level[N];
+int parentLevel[N];
 
 void bfs(int s) {
     queue<int> q;
     q.push(s);
     visited[s] = true;
-    level[s] = 0;
+    parentLevel[s] = 0;
     while(!q.empty()) {
         int u = q.front();
         q.pop();
@@ -26,7 +26,7 @@ void bfs(int s) {
             if(visited[v]) continue;
             q.push(v);
             visited[v] = true;
-            level[v] = level[u] + 1;
+            parentLevel[v] = parentLevel[u] + 1;
         }
     }
 }
@@ -47,7 +47,7 @@ int main () {
     cout << endl;
 
     for (int i = 1; i <= n; i++) {
-        cout << "Level of " << i << " is " << level[i] << endl;
+        cout << "Level of " << i << " is " << parentLevel[i] << endl;
     }
     return 0;
 }

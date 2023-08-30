@@ -4,7 +4,7 @@ using namespace std;
 const int N = 1e5 + 5;
 vector<int> adj[N];
 bool visited[N];
-int level[N];
+int parentLevel[N];
 
 void init_code() {
     #ifndef ONLINE_JUDGE
@@ -17,14 +17,14 @@ void bfs(int s) {
     queue<int> q;
     q.push(s);
     visited[s] = true;
-    level[s] = 0;
+    parentLevel[s] = 0;
     while(!q.empty()) {
         int u = q.front();
         q.pop();
         for(auto v : adj[u]) {
             if(visited[v]) continue;
             q.push(v);
-            level[v] = level[u] + 1;
+            parentLevel[v] = parentLevel[u] + 1;
             visited[v] = true;
         }
     }
@@ -49,7 +49,7 @@ int main () {
     }
     vector<int> v;
     for (int i = 0; i < N; i++) {
-        if(level[i] == l) {
+        if(parentLevel[i] == l) {
             v.push_back(i);
         }
     }

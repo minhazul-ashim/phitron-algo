@@ -10,7 +10,7 @@ void init_code() {
 
 const int N = 1e5 + 5;
 vector<int> adj[N];
-int level[N];
+int parentLevel[N];
 int visited[N];
 int parent[N];
 
@@ -18,7 +18,7 @@ void bfs(int s) {
     queue<int> q;
     q.push(s);
     visited[s] = true;
-    level[s] = 0;
+    parentLevel[s] = 0;
     parent[s] = -1;
     while(!q.empty()) {
         int u = q.front();
@@ -27,7 +27,7 @@ void bfs(int s) {
             if(visited[v]) continue;
             q.push(v);
             visited[v] = true;
-            level[v] = level[u] + 1;
+            parentLevel[v] = parentLevel[u] + 1;
             parent[v] = u;
         }
     }
@@ -46,7 +46,7 @@ int main () {
     int s, d;
     cin >> s >> d;
     bfs(s);
-    cout << "Shortest distance from " << s << " to " << d << " is " << level[d] << endl;
+    cout << "Shortest distance from " << s << " to " << d << " is " << parentLevel[d] << endl;
     // for (int i = 1; i <= n; i++) {
     //     cout << "Parent of " << i << " is " << parent[i] << endl;
     // }

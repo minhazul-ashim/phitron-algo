@@ -4,15 +4,15 @@ using namespace std;
 const int N = 1e5 + 5;
 vector<int> adj[N];
 bool visited[N];
-int level[N] = {-1};
+int parentLevel[N] = {-1};
 
 void bfs(int s) {
     memset(visited, false, sizeof(visited));
-    memset(level, -1, sizeof(level));
+    memset(parentLevel, -1, sizeof(parentLevel));
     queue<int> q;
     q.push(s);
     visited[s] = true;
-    level[s] = 0;
+    parentLevel[s] = 0;
     while(!q.empty()) {
         int u = q.front();
         q.pop();
@@ -21,7 +21,7 @@ void bfs(int s) {
                 continue;
             q.push(v);
             visited[v] = true;
-            level[v] = level[u] + 1;
+            parentLevel[v] = parentLevel[u] + 1;
         }
     }
 }
@@ -42,10 +42,10 @@ int main () {
         int s, d;
         cin >> s >> d;
         bfs(s);
-        if(s != d && level[d] == 0) {
+        if(s != d && parentLevel[d] == 0) {
             cout << -1 << endl;
         } else {
-            cout << level[d] << endl;
+            cout << parentLevel[d] << endl;
         }
     }
     return 0;
