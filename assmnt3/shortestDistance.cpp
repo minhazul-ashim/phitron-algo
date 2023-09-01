@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-const int INF = 1e9 + 10;
+const long long int INF = 1e18 + 10;
 
 void init_code() {
     #ifndef ONLINE_JUDGE
@@ -13,7 +13,7 @@ void init_code() {
 int main () {
     init_code();
 
-    int n, e;
+    long long int n, e;
     cin >> n >> e;
 
     long long int dis[n + 1][n + 1];
@@ -28,7 +28,7 @@ int main () {
     }
 
     while(e--) {
-        int a, b, w;
+        long long int a, b, w;
         cin >> a >> b >> w;
         if(dis[a][b] != 0 || dis[a][b] != INF) {
             if(dis[a][b] > w) {

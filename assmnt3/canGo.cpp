@@ -13,8 +13,8 @@ class Edge {
     }
 };
 
-const int INF = 1e9;
-const int N = 1e5 + 5;
+const long long int INF = 1e18;
+const int N = 1e7 + 5;
 vector<Edge> edges;
 long long int dis[N];
 int n, e;
